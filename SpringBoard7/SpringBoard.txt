@@ -24,7 +24,15 @@ SpringBoard.txt
   
   *DB생성
   
-  
+  CREATE TABLE `tbl_board` (
+  `bno` int NOT NULL AUTO_INCREMENT COMMENT '게시판 글 번호를 설정\nAI(자동으로 숫자를 증가시켜가면서 설정) ',
+  `title` varchar(200) NOT NULL COMMENT '글 제목',
+  `content` text COMMENT '글 내용',
+  `writer` varchar(50) NOT NULL COMMENT '글쓴이',
+  `regdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '작성일',
+  `viewcnt` int DEFAULT '0' COMMENT '조회수 (기본값 0)',
+  PRIMARY KEY (`bno`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
   
   
   
