@@ -25,6 +25,7 @@ public class BoardController {
 	public void boardRegistGET() {
 	
 		logger.info("boardRegistGET()실행");
+		logger.info("/views/board/regist.jsp 페이지로 이동");
 	}
 	
 	// 글쓰기(정보 처리) / POST
