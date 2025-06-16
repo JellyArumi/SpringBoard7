@@ -59,7 +59,7 @@ public class BoardDAOImpl implements BoardDAO {
 		logger.info("size: "+boardList.size());
 		
 		
-		return null;
+		return boardList;
 	}
 	
 	

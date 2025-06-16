@@ -1,13 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h1>/board/listALl.jsp</h1>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-</body>
-</html>
+<%@include file="../include/header.jsp" %>
+<div class="content">
+<h1>/board/listALL.jsp</h1>
+<%-- ${boardList } --%>
+
+<div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">아이티윌게시판</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-bordered">
+                <tbody><tr>
+                  <th style="width: 10px">bno</th>
+                  <th>title</th>
+                  <th>writer</th>
+                  <th style="width: 40px">viewcnt</th>                
+                </tr>
+                
+                <c:forEach var="vo" items="${boardList }">
+                <tr>
+                  <td>${vo.bno }</td>
+                  <td>${vo.tite }</td>
+                  <td>${vo.writer } </td>
+                  <td><span class="badge bg-red">${vo.viewcnt }</span></td>
+                </tr>
+                <tr>
+                 </c:forEach> 
+                 
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="#">«</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">»</a></li>
+              </ul>
+            </div>
+          </div>
+</div>
+<%@include file="../include/footer.jsp" %>
