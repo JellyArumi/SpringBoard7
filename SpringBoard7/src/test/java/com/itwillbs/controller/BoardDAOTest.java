@@ -1,5 +1,7 @@
 package com.itwillbs.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
@@ -46,6 +48,14 @@ public void 글쓰기_테스트() throws Exception{
 	vo.setContent("테스트글입니다");
 	
 	bDAo.boardInsert(vo);
+}
+
+//게시판 리스트(all)동작테스트
+public void 게시판리스트_테스트() throws Exception{
+	logger.info("게시판 리스트 테스트 실행()");
+	List<BoardVO> boardList
+	=bDAo.boardListSelect();
+	logger.info("{}",boardList);
 }
   
 }

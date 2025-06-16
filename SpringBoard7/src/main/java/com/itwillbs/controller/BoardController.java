@@ -1,10 +1,13 @@
 package com.itwillbs.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 //@RequestMapping(value="/board/*")
@@ -34,8 +37,7 @@ public class BoardController {
 	//http://localhost:8088/board/regist  (o) 
 	// 글쓰기(정보 입력) / GET
 	@RequestMapping(value="/regist",method = RequestMethod.GET )
-	public void boardRegistGET() {
-	
+	public void boardRegistGET() throws Exception{
 		logger.info("boardRegistGET()실행");
 		logger.info("/views/board/regist.jsp 페이지로 이동");
 	}
@@ -60,8 +62,21 @@ public class BoardController {
 		return "redirect:/board/listALL";
 		
 	}
-
+	//http://localhost:8088/board/listALL
+	//게시판 리스트(ALL)
+	@RequestMapping(value = "/listALL", method=RequestMethod.GET)
+	public void boardListAllGET(Model model) throws Exception{
+		logger.info("boardListAllGET() 실행");
+		
+		//서비스 ->DAo호출 ->DB 조회
+		List<BoardVO> boardList = bService.boardListAll();
+		
+		//컨트롤러->뷰페이지로 전달(Model)
+		model.addAttribute("boardList",boardList);
+		
+		logger.info("/views/board/listALL.jsp페이지 연결");
 	
+	}
 	
 	
 	
