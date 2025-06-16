@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@include file="../include/header.jsp" %>
+
 <div class="content">
 <h1>/board/listALL.jsp</h1>
 <%-- ${boardList } --%>
@@ -24,11 +25,12 @@
                 <c:forEach var="vo" items="${boardList }">
                 <tr>
                   <td>${vo.bno }</td>
-                  <td>${vo.tite }</td>
+                  <td>${vo.title }</td>
                   <td>${vo.writer } </td>
-                  <td><span class="badge bg-red">${vo.viewcnt }</span></td>
-                </tr>
-                <tr>
+                  <td><span class="badge bg-red">${vo.viewcnt }
+                  </span>
+                  </td>
+                 </tr>
                  </c:forEach> 
                  
             <!-- /.box-body -->
