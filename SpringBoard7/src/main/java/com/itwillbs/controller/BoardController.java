@@ -8,12 +8,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 //@RequestMapping(value="/board/*")
 //=> 실행하는 주소가 /board/~시작하는 모든 주소를
 //   해당 컨트롤러가 처리하겠다
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.domain.BoardVO;
@@ -86,8 +88,21 @@ public class BoardController {
 		logger.info("/views/board/listALL.jsp페이지 연결");
 	
 	}
+	// http://localhost:8088/board/read?bno=11
+	//게시판 본문보기 기능 /board/read  GET
+	@GetMapping(value="/read")
+	public void boardReadGET(@RequestParam("bno") int bno) throws Exception {
+		logger.info("boardReadGET() 실행");
+		logger.info("bno : {} ", bno);
+		
+
 	
+	//특정 글 정보(bno)를 DB에서 가져와서 view 페이지에 출력
+		
+	// 서비스 -> DAO 특정 글정보 가져오기
 	
+	// 연결된 뷰페이지에 /board/read.jsp 출력	
+	}
 	
 	
 }//BoardController

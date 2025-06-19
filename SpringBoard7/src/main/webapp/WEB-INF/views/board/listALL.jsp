@@ -25,7 +25,9 @@
                 <c:forEach var="vo" items="${boardList }">
                 <tr>
                   <td>${vo.bno }</td>
-                  <td>${vo.title }</td>
+                  <td>
+                  <a href = "/board/read"> ${vo.title }</a>
+                  </td>
                   <td>${vo.writer } </td>
                   <td><span class="badge bg-red">${vo.viewcnt }
                   </span>
