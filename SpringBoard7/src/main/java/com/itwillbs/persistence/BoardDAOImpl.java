@@ -67,7 +67,7 @@ public class BoardDAOImpl implements BoardDAO {
 	public BoardVO boardSelect(int bno) throws Exception {
 		logger.info("실행");
 		BoardVO resultVO
-		=	sqlSession.selectOne(NAMESPACE + "getBoard");
+		=	sqlSession.selectOne(NAMESPACE + "getBoard",bno);
 		logger.info("결과 :{}",resultVO);
 		
 		return null;
