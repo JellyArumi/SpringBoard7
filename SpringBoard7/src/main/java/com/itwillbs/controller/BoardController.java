@@ -100,8 +100,10 @@ public class BoardController {
 	//특정 글 정보(bno)를 DB에서 가져와서 view 페이지에 출력
 		
 	// 서비스 -> DAO 특정 글정보 가져오기
-	
+		BoardVO resultVO = bService.getBoard(bno);
+		logger.info("resultVO :{}",resultVO);
 	// Model 객체 사용	
+		
 		
 	// 연결된 뷰페이지에 /board/read.jsp 출력	
 	}

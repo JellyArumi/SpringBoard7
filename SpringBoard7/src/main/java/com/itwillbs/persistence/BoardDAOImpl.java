@@ -70,7 +70,7 @@ public class BoardDAOImpl implements BoardDAO {
 		=	sqlSession.selectOne(NAMESPACE + "getBoard",bno);
 		logger.info("결과 :{}",resultVO);
 		
-		return null;
+		return resultVO;
 	}
 	
 	
