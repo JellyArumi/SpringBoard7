@@ -63,6 +63,25 @@ SpringBoard.txt
   - 게시판 내용 삭제
   
   
+  -------------------------------
+  Model객체 (택배아저씨)
+  :스프링 제공 객체(컨트롤러의 데이터를 뷰페이지로 전달)
+  	addAttribute("이름",값);=> 주소줄에 정보 전달 & 정보 유지
+  	
+  RedirectAttribute 객체(쿠팡아저씨)
+  : 스프링 제공 객체(컨트롤러의 데이터를 뷰페이지로 전달)
+	단, 페이지를 리다이렉트 이동시 사용가능
+  addAttribute("이름",값);
+  addFlashAttribute("이름",값);=> 주소줄에 정보 전달x & 정보 유지x (새로고침시 삭제)
+  	
+  @ModelAttribute
+  
+  @RequesstParam
+  
+  RedirectAttirbute 객체
+  
+  
+  
   
   
   
