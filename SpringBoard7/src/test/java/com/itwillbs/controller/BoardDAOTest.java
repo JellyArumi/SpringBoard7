@@ -57,5 +57,11 @@ public void 게시판리스트_테스트() throws Exception{
 	=bDAo.boardListSelect();
 	logger.info("{}",boardList);
 }
-  
+	@Test
+  public void 게시판본문_테스트() throws Exception{
+	 logger.info("게시판본문보기 테스트"); 
+	 int bno = 4;
+		bDAo.boardSelect(bno);
+		
+  }
 }

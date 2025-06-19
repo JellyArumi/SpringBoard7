@@ -101,6 +101,8 @@ public class BoardController {
 		
 	// 서비스 -> DAO 특정 글정보 가져오기
 	
+	// Model 객체 사용	
+		
 	// 연결된 뷰페이지에 /board/read.jsp 출력	
 	}
 	

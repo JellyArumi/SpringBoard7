@@ -5,8 +5,11 @@
   
   <configuration>
   	<!-- mybatis 관련된 설정을 저장하는 파일 -->
-  
-  
-  
-  
+  	<typeAliases>
+  	<package name ="com.itwillbs.domain"/>	
+  	
+  	
+  	
+  	</typeAliases>
+    
   </configuration>
