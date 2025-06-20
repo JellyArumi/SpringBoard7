@@ -91,21 +91,29 @@ public class BoardController {
 	// http://localhost:8088/board/read?bno=11
 	//게시판 본문보기 기능 /board/read  GET
 	@GetMapping(value="/read")
-	public void boardReadGET(@RequestParam("bno") int bno) throws Exception {
+	public void boardReadGET(@RequestParam("bno") int bno,
+			Model model) throws Exception {
 		logger.info("boardReadGET() 실행");
 		logger.info("bno : {} ", bno);
+	
+	//서비스 -> 특정 글의 조회수를 1증가	
 		
-
 	
 	//특정 글 정보(bno)를 DB에서 가져와서 view 페이지에 출력
 		
 	// 서비스 -> DAO 특정 글정보 가져오기
 		BoardVO resultVO = bService.getBoard(bno);
 		logger.info("resultVO :{}",resultVO);
+	
 	// Model 객체 사용	
+		model.addAttribute(resultVO);
+		//전달하는 객체 타입의 클래스명을 첫글자 소문자로 바꿔서 이름지정
+		//model.addAttribute("resultVO", resultVO);
 		
 		
-	// 연결된 뷰페이지에 /board/read.jsp 출력	
+	// 연결된 뷰페이지에 /board/read.jsp 출력
+		logger.info("/board/read.jsp 페이지 연결");
+		
 	}
 	
 	
