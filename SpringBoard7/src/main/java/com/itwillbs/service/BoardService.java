@@ -20,4 +20,6 @@ public interface BoardService {
 	public BoardVO getBoard(int bno) throws Exception;
 	
 
+	//게시판 조회수 증가
+	public void increaseViewcnt(int bno) throws Exception;
 }
