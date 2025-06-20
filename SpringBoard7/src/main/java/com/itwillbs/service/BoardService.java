@@ -16,7 +16,10 @@ public interface BoardService {
 	// 게시판 리스트(all)
 	public List<BoardVO> boardListAll() throws Exception;
 	
-	
+	// 게시판 본문보기
+	public BoardVO getBoard(int bno) throws Exception;
 	
 
+	//게시판 조회수 증가
+	public void increaseViewcnt(int bno) throws Exception;
 }

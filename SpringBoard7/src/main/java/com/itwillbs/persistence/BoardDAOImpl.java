@@ -1,5 +1,6 @@
 package com.itwillbs.persistence;
 
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.BoardVO;
-
 /**
  *  BoardDAOImpl : BoardDAO 인터페이스를 구현한 객체
  *  			SQL 호출 동작을 실행
@@ -61,6 +61,27 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		return boardList;
 	}
+
+
+	@Override
+	public BoardVO boardSelect(int bno) throws Exception {
+		logger.info("실행");
+		BoardVO resultVO
+		=	sqlSession.selectOne(NAMESPACE + "getBoard",bno);
+		logger.info("결과 :{}",resultVO);
+		
+		return resultVO;
+	}
+
+
+	@Override
+	public void viewcntUpdate(int bno) throws Exception {
+		logger.info("viewcntUpdate(int bno) 실행");
+		sqlSession.update(NAMESPACE + "increaseViewcnt",bno);
+		
+	}
+	
+	
 	
 	
 
