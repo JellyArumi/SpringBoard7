@@ -6,8 +6,8 @@
 
 	<div class="content"> 
 <!-- 		<h1>/board/listALL.jsp</h1> -->
-	
-		<%-- ${boardList } --%>
+	${updateCheck }
+<%-- 	 ${boardList }  --%>
 		<%--  ${result } --%>
 		<div class="box">
             <div class="box-header with-border">

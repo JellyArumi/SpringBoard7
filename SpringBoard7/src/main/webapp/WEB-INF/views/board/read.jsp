@@ -10,7 +10,7 @@
 	<div class="content">
 	<h1>/board/read.jsp</h1>
 	
-	${boardVO }
+	${updateCheck }
 	
 	<div class="box box-primary">
             <div class="box-header with-border">
