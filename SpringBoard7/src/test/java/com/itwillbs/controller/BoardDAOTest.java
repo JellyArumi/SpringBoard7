@@ -57,11 +57,21 @@ public void 게시판리스트_테스트() throws Exception{
 	=bDAo.boardListSelect();
 	logger.info("{}",boardList);
 }
-	@Test
+	//@Test
   public void 게시판본문_테스트() throws Exception{
 	 logger.info("게시판본문보기 테스트"); 
 	 int bno = 4;
 		bDAo.boardSelect(bno);
 		
+		
   }
+	//@Test
+	public void 조회수1증가_테스트() throws Exception{
+		logger.info("조회수 1증가 테스트");
+		int bno = 1;
+		bDAo.viewcntUpdate(bno);
+		
+	}
+	
+	
 }
