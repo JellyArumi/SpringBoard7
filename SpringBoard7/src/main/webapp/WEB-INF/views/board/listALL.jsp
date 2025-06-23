@@ -66,6 +66,9 @@
 		if(result == "createOK"){
 			alert(" 글쓰기 완료! ");
 		}
+		if(result == "modifyOK"){
+			alter("글 수정 완료!");
+		}
 		
 		
 	</script>
