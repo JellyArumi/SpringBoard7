@@ -151,10 +151,12 @@ public class BoardController {
 		logger.info("boardModifyPOST() 실행");
 		// 수정할 정보(전달된 데이터, 파라메터) 저장
 		logger.info("vo : {}", vo);
-		//model.addAttribute(bService.getClass(form-group));
+		
 		
 		
 		// 서비스 -> DB에 정보 호출
+		
+		
 		
 		// 페이지 이동
 		
