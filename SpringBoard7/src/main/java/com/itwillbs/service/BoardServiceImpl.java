@@ -85,6 +85,16 @@ public class BoardServiceImpl implements BoardService {
 
 
 
+	@Override
+	public void removeBoard(BoardVO vo) throws Exception {
+		logger.info("removeBoard(BoardVO vo)");
+		bDao.boardRemove(vo);
+		logger.info("게시판 삭제 완료");
+		
+	}
+
+
+
 
 
 	
