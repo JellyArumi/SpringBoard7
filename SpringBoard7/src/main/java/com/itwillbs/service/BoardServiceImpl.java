@@ -75,6 +75,16 @@ public class BoardServiceImpl implements BoardService {
 
 
 
+	@Override
+	public void modifyBoard(BoardVO vo) throws Exception {
+		logger.info("modifyBoard(BoardVO vo)");
+		bDao.boardUpdate(vo);
+		logger.info("게시판 수정 완료");
+		
+	}
+
+
+
 
 
 	

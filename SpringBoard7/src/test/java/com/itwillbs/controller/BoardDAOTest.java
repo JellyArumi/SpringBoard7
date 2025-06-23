@@ -72,6 +72,15 @@ public void 게시판리스트_테스트() throws Exception{
 		bDAo.viewcntUpdate(bno);
 		
 	}
-	
+	@Test
+	public void 수정테스트() throws Exception{
+	BoardVO vo = new BoardVO();
+		vo.setBno(1);
+		vo.setTitle("3333333");
+		vo.setContent("22222222");
+		vo.setWriter("0000");
+		
+		bDAo.boardUpdate(vo);
+	}
 	
 }

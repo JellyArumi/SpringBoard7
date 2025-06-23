@@ -80,8 +80,19 @@ public class BoardDAOImpl implements BoardDAO {
 		sqlSession.update(NAMESPACE + "increaseViewcnt",bno);
 		
 	}
+
+
 	
+	//게시판 수정하기
 	
+	@Override
+	public void boardUpdate(BoardVO vo) throws Exception {
+		logger.info("게시판 글 수정하기");
+		
+		//sql 구문 호출
+		sqlSession.update(NAMESPACE + "updateBoard", vo);
+		logger.info("게시판 글 수정완료");
+	}
 	
 	
 

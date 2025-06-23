@@ -10,17 +10,21 @@
 	<div class="content">
 	<h1>/board/read.jsp</h1>
 	
-	${updateCheck }
+	<%-- 		${updateCheck } --%>
+<%-- 	${boardVO } --%>
 	
 	<div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">게시판 본문보기</h3>
+              <h3 class="box-title">게시판 수정하기</h3>
             </div>
             <!-- /.box-header -->
             
-           
             <!-- form start -->
-                     
+			<!-- submit 버튼 클릭시 정보 전달하기위한 폼태그 -->            
+            <form role="form"> <!-- action, method 속성 생략 -->
+            	<input type="hidden" name="bno" value="${boardVO.bno}">
+            </form>
+            
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">번 호</label>
@@ -62,33 +66,48 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">글쓰기</button>
+                <button type="submit" class="btn btn-primary btn-lg">수정</button>
                 <button type="submit" class="btn btn-danger btn-lg">목록</button>
               </div>
-         
+           
           </div>
 
 	</div> <!-- .content  -->
+	
 	<!-- jQuery 사용 -->
-	<!-- 1)jquery 소스코드를 추가 -->
-
-	<!-- 2)jquery 소스코드 사용 -->
+	<!-- 1) jquery 소스코드를 추가 -->
+	<!-- <script src="jQuery-2.1.4.min.js"></script> -->
+	<!-- 2) jquery 소스코드 사용 -->
 	<script type="text/javascript">
-	/*jquery : javascript에서 기능을 모아서 만든 것*/
+		/* jquery : javascript에서 기능을 모아서 만든것 */
 		$(document).ready(function(){
-			//=> 문서가 준비된 경우 실행하는 동작
-			//=> 작성되는 코드 jquery 
+			// => 문서가 준비된 경우 실행하는 동작
+			// => 작성되는 코드 jquery
 			$(".btn-danger").click(function(){
+				alert(" 게시판 목록으로 이동합니다! ");
+				// 게시판 목록으로 이동
+				location.href="/board/listALL";				
+			});//click
 			
-				alert("게시판 목록으로 이동합니다.")
-				
-				//게시판 목록으로 이동
-				location.href="/board/listALL"
-			});// click
+			var form = $("form[role='form']");
 			
-		}); // ready
+			$(".btn-primary").click(function(){
+				// 수정하기 버튼 클릭시 
+				// bno 정보를 가지고 /board/modify 이동
+			    //location.href="/board/modify?bno=${boardVO.bno }";		
+				form.attr("action","/board/modify");
+				form.submit();
+			    
+			});//click
+			
+		});	// ready
 	</script>
-
+	
+	
+	
+	
+	
+	
 	<%@include file="../include/footer.jsp" %>
 <!--  템플릿 푸더 추가  -->
 	

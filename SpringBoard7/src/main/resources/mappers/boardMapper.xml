@@ -34,7 +34,15 @@
     
     </update>
     
-    
+    <!-- 게시판 글 정보 수정 -->
+    <update id = "updateBoard">
+    	update tbl_board set
+    	title =#{title},
+    	writer = #{writer},
+    	content = #{content} 
+    	where bno = #{bno}
+            
+    </update>
     
     
   </mapper>
