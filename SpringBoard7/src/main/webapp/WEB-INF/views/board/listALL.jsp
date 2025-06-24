@@ -69,7 +69,9 @@
 		if(result == "modifyOK"){
 			alter("글 수정 완료!");
 		}
-		
+		if(result == "deleteOK"){
+			alter("글 삭제 완료!");
+		}
 		
 	</script>
 	

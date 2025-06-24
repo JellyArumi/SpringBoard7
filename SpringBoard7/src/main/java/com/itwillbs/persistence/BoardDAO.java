@@ -30,7 +30,7 @@ public interface BoardDAO {
 	public void boardUpdate(BoardVO vo) throws Exception;
 
 	// 게시판 글 삭제하기
-	public void boardRemove(BoardVO vo) throws Exception;
+	public int boardRemove(BoardVO vo) throws Exception;
 	
 	
 	
