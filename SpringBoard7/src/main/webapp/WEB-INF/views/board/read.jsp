@@ -21,7 +21,7 @@
             
             <!-- form start -->
 			<!-- submit 버튼 클릭시 정보 전달하기위한 폼태그 -->            
-            <form role="form"> <!-- action, method 속성 생략 -->
+            <form role="form" > <!-- action, method 속성 생략 -->
             	<input type="hidden" name="bno" value="${boardVO.bno}">
             </form>
             
@@ -67,6 +67,7 @@
 
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary btn-lg">수정</button>
+                 <button type="submit" class="btn btn-success btn-lg">삭제</button>
                 <button type="submit" class="btn btn-danger btn-lg">목록</button>
               </div>
            
@@ -100,7 +101,20 @@
 			    
 			});//click
 			
+			$(".btn-success").click(function(){
+				// 삭제하기 버튼 클릭시
+				// 글번호를 가지고 삭제처리
+				// /board/remove 주소(post) 호출
+				form.attr("action","/board/remove");
+				form.attr("method","post");
+				form.submit();
+				
+			});
+			
 		});	// ready
+		
+		
+		
 	</script>
 	
 	

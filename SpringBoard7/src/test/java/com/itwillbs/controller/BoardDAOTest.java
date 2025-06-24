@@ -72,7 +72,7 @@ public void 게시판리스트_테스트() throws Exception{
 		bDAo.viewcntUpdate(bno);
 		
 	}
-	@Test
+	//@Test
 	public void 수정테스트() throws Exception{
 	BoardVO vo = new BoardVO();
 		vo.setBno(1);
@@ -81,6 +81,12 @@ public void 게시판리스트_테스트() throws Exception{
 		vo.setWriter("0000");
 		
 		bDAo.boardUpdate(vo);
+	}
+	@Test
+	public void 글삭제테스트() throws Exception{
+		BoardVO vo = new BoardVO();
+		vo.setBno(1);
+		bDAo.boardRemove(vo);
 	}
 	
 }

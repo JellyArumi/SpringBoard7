@@ -174,6 +174,37 @@ public class BoardController {
 	
 	}
 	
+	// 게시판 삭제하기 POST
+		@RequestMapping(value = "/remove", method = RequestMethod.POST)
+		public String boardRemovePOST(BoardVO vo ,RedirectAttributes rttr) throws Exception{
+			logger.info("boardRemovePOST() 실행");
+			// 수정할 정보(전달된 데이터, 파라메터) 저장
+			logger.info("vo : {}", vo);
+			
+						
+			// 서비스 -> DB에 정보 호출
+			bService.removeBoard(vo);
+			logger.info("게시판 글 삭제 완료!");
+			
+			rttr.addFlashAttribute("result", "deleteOK");
+			//리스트페이지로 이동	
+			
+			// 페이지 이동
+			
+			return "redirect:/board/listALL";
+		
+			
+		
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+	
 	
 	
 	
