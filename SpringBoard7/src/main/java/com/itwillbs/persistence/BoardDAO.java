@@ -3,13 +3,12 @@ package com.itwillbs.persistence;
 import java.util.List;
 
 import com.itwillbs.domain.BoardVO;
+import com.itwillbs.domain.Criteria;
 
 /**
- * BoardDAO : 서비스의 요청을 받아서 SQL 구문을 실행
+ *  BoardDAO : 서비스의 요청을 받아서 SQL 구문을 실행
  *  
- * 
  */
-
 
 public interface BoardDAO {
 	
@@ -19,18 +18,25 @@ public interface BoardDAO {
 	
 	// 게시판 리스트(all)
 	public List<BoardVO> boardListSelect() throws Exception;
+	// 게시판 리스트(page)
+	public List<BoardVO> boardListPageSelect(int page) throws Exception;
+	// 게시판 리스트(cri)
+	public List<BoardVO> boardListCriSelect(Criteria cri) throws Exception;
 	
-	//게시판 본문보기
+	
+	
+	// 게시판 본문보기
 	public BoardVO boardSelect(int bno) throws Exception;
 	
 	// 게시판 글 조회수 1증가
 	public void viewcntUpdate(int bno) throws Exception;
-	
+
 	// 게시판 글정보 수정
 	public void boardUpdate(BoardVO vo) throws Exception;
-
-	// 게시판 글 삭제하기
-	public int boardRemove(BoardVO vo) throws Exception;
+	
+	// 게시판 글정보 삭제
+	public int boardDelete(int bno) throws Exception;
+	
 	
 	
 	

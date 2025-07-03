@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.domain.BoardVO;
+import com.itwillbs.domain.Criteria;
 import com.itwillbs.service.BoardService;
 
 // @RequestMapping(value = "/board/*")
@@ -70,7 +71,8 @@ public class BoardController {
 		// model.addAttribute("data","1234");
 		// => 두개의 동작이 동일함 (주소줄로 전달, 계속해서 정보가 남아있음)
 		
-		return "redirect:/board/listALL";
+		//return "redirect:/board/listALL";
+		return "redirect:/board/listCri";
 	}
 	
 	
@@ -89,7 +91,38 @@ public class BoardController {
 		// 컨트롤러 -> 뷰페이지로 전달 (Model)
 		model.addAttribute("boardList", boardList);
 		
-		logger.info(" /views/board/listALL.jsp 페이지 연결");
+		//logger.info(" /views/board/listALL.jsp 페이지 연결");
+		logger.info(" /views/board/listCri.jsp 페이지 연결");
+	}
+	
+	// http://localhost:8088/board/listCri  기본값 호출(1,10)
+	// http://localhost:8088/board/listCri?page=2  
+	// http://localhost:8088/board/listCri?pageSize=20  
+	// http://localhost:8088/board/listCri?page=2&pageSize=30  
+	
+	
+	// 게시판 리스트 (Cri)
+	@RequestMapping(value = "/listCri",method = RequestMethod.GET)
+	public void boardListCriGET(Model model,HttpSession session,
+			                     Criteria cri) throws Exception {
+		logger.info(" boardListCriGET() 실행");
+		
+		// 서비스 -> DAO 호출 -> DB 조회
+		//List<BoardVO> boardList = bService.boardListAll();
+//		Criteria cri = new Criteria();
+//		cri.setPage(1);
+//		cri.setPageSize(10);
+		
+		List<BoardVO> boardList = bService.boardListCri(cri);
+		
+		// 세션사용해서 정보를 저장
+		session.setAttribute("updateCheck", true);
+		
+		// 컨트롤러 -> 뷰페이지로 전달 (Model)
+		model.addAttribute("boardList", boardList);
+		
+		//logger.info(" /views/board/listALL.jsp 페이지 연결");
+		logger.info(" /views/board/listCri.jsp 페이지 연결");
 	}
 	
 	
@@ -145,65 +178,48 @@ public class BoardController {
 		// 연결된 뷰페이지에 출력(/board/modify.jsp)
 	}
 	
-	// 게시판 수정하기 POST
-	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String boardModifyPOST(BoardVO vo , RedirectAttributes rttr) throws Exception{
-		logger.info("boardModifyPOST() 실행");
+	// 게시판 수정하기 POST 
+	@RequestMapping(value = "/modify",method = RequestMethod.POST)
+	public String boardModifyPOST(BoardVO vo,
+			                  RedirectAttributes rttr) throws Exception{
+		logger.info(" boardModifyPOST() 실행 ");	
+		
 		// 수정할 정보(전달된 데이터, 파라메터) 저장
-		logger.info("vo : {}", vo);
-		
-		
+		logger.info(" vo : {}",vo);
 		
 		// 서비스 -> DB에 정보 호출
 		bService.modifyBoard(vo);
-		logger.info("게시판 글 수정 완료!");
+		logger.info(" 게시판 글 수정 완료! ");
 		
-		
-		//리스트에 수정 완료 했다는 정보를 전달해서
+		// 리스트에 수정 완료했다는 정보를 전달해서
+		// 화면에 alert 출력
 		rttr.addFlashAttribute("result", "modifyOK");
 		
+		// 페이지 이동	(리스트)	
 		
-		//화면에 alert 출력
-		
-		
-		
-		// 페이지 이동
-		
-		return "redirect:/board/listALL";
-		
-	
+		//return "redirect:/board/listALL";
+		return "redirect:/board/listCri";
 	}
 	
-	// 게시판 삭제하기 POST
-		@RequestMapping(value = "/remove", method = RequestMethod.POST)
-		public String boardRemovePOST(BoardVO vo ,RedirectAttributes rttr) throws Exception{
-			logger.info("boardRemovePOST() 실행");
-			// 수정할 정보(전달된 데이터, 파라메터) 저장
-			logger.info("vo : {}", vo);
-			
-						
-			// 서비스 -> DB에 정보 호출
-			bService.removeBoard(vo);
-			logger.info("게시판 글 삭제 완료!");
-			
-			rttr.addFlashAttribute("result", "deleteOK");
-			//리스트페이지로 이동	
-			
-			// 페이지 이동
-			
-			return "redirect:/board/listALL";
+	// http://localhost:8088/board/remove (POST)
+	// 게시판 글삭제
+	@RequestMapping(value = "/remove",method = RequestMethod.POST)
+	public String boardRemovePOST(/* @ModelAttribute */ int bno,
+			                      RedirectAttributes rttr  ) throws Exception{
+		logger.info(" boardRemovePOST() 실행 ! ");
 		
-			
+		// 전달된 파라메터(bno) 저장
+		logger.info(" bno : "+bno);
 		
-			
-			
-			
-			
-			
-			
-			
-			
-		}
+		// 서비스 -> DAO 호출 게시판 글 삭제를 수행 동작
+		bService.removeBoard(bno);
+
+		rttr.addFlashAttribute("result", "deleteOK");
+		// 리스트 페이지로 이동
+		
+	//	return "redirect:/board/listALL";
+		return "redirect:/board/listCri";
+	}
 	
 	
 	
