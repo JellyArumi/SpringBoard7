@@ -82,10 +82,29 @@ SpringBoard.txt
   
   
   
+  ------------------------------
+  *페이지 블럭
+   - 시작 페이지 번호(startPage)
+   - 끝 페이지번호(endPage)
+   - 전체 데이터의 개수(totalCount)
+   - 이전페이지(prev)
+   - 다음페이지(next)
+   
+   ex) 한 페이지에 10개씩 출력, 총 글 122개, 페이지 블럭 크기 : 10개
+   -> 총페이지수 12.2개 => 13개
+   1) 3page 글 리스트
+      startPage =1, endPage = 10, prev = X, next = 0
+   2) 10페이지 글 리스트
+   3) startPage = 1 , endPage=10, prev=X, next =0
+   
   
   
   
-  
+  의존 객체 자동주입(Automatic Dependency Injection)
+  => 스프링 설정 파일(root-context.xml/servlet-context.xml) 태그를 사용해서
+  의존 객체 대상을 명시하지 않고 스프링 컨테이너가 자동으로 객체 주입해주는 것
+
+
   
   
   
