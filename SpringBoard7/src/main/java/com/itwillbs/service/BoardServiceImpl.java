@@ -92,6 +92,18 @@ public class BoardServiceImpl implements BoardService {
 		logger.info(" boardListCri(Criteria cri) 실행");
 		return bDao.boardListCriSelect(cri);
 	}
+
+
+	//게시판 글 최대 갯수
+	@Override
+	public int boardTotalCount() throws Exception {
+		return bDao.boardTotalCount();
+	}
+
+
+	
+	
+	
 	
 	
 	

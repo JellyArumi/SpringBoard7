@@ -23,6 +23,9 @@ public interface BoardDAO {
 	// 게시판 리스트(cri)
 	public List<BoardVO> boardListCriSelect(Criteria cri) throws Exception;
 	
+	//게시판 글 갯수 가져오기
+	public int boardTotalCount() throws Exception;
+	
 	
 	
 	// 게시판 본문보기

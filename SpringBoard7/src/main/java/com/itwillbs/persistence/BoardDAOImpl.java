@@ -131,6 +131,21 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		return sqlSession.selectList(NAMESPACE + "listCri", cri);
 	}
+
+    // 게시판 글 갯수 조회
+	@Override
+	public int boardTotalCount() throws Exception {
+		logger.info("boardTotalCount()호출");
+		
+		int cnt = sqlSession.selectOne(NAMESPACE + "boardTotalCount");
+		return cnt;
+		
+		// return sqlSession.selectOne(NAMESPACE + "boardTotalCount");
+	}
+
+
+
+	
 	
 	
 	

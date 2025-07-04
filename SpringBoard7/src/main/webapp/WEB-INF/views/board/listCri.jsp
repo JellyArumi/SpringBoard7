@@ -6,7 +6,7 @@
 
 	<div class="content"> 
 		<h1>/board/listCri.jsp</h1>
-	
+	${pageVO }
 		<%-- ${boardList } --%>
 		<%--  ${result } --%>
 <%-- 		${updateCheck } --%>
@@ -28,7 +28,7 @@
 	                <tr>
 	                  <td>${vo.bno }</td>
 	                  <td>
-	                  	<a href="/board/read?bno=${vo.bno }">${vo.title }</a>
+	                  	<a href="/board/read?bno=${vo.bno }&page=${pageVO.cri.page}&page=${pageVO.cri.pageSize}">${vo.title }</a>
 	                  </td>
 	                  <td>${vo.writer }</td>
 	                  <td>
@@ -43,11 +43,24 @@
             <!-- /.box-body -->
             <div class="box-footer clearfix">
               <ul class="pagination pagination-sm no-margin pull-right">
-                <li><a href="#">«</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">»</a></li>
+                
+                <c:if test="${pageVO.prev }">
+                <!-- 이전블럭 -->
+                 <li><a href="/board/listCri?page=${pageVO.startPage -1 }">«</a></li>
+                
+                </c:if>
+               
+                
+                <c:forEach var ="idx" begin="${pageVO.startPage }" end="${pageVO.endPage }" step="1">
+                <li class="${pageVO.cri.page == idx ? 'active': '' }"><a href="/board/listCri?page=${idx }">${idx }</a></li>
+                </c:forEach>
+                
+                <c:if test="${pageVO.next&&pageVO.endPage>0 }">
+                 <!-- 다음블럭 -->
+                <li><a href="/board/listCri?page=${pageVO.endPage+1 }">»</a></li>
+                </c:if>
+                
+                
               </ul>
             </div>
           </div>

@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.domain.BoardVO;
 import com.itwillbs.domain.Criteria;
+import com.itwillbs.domain.PageVO;
 import com.itwillbs.service.BoardService;
 
 // @RequestMapping(value = "/board/*")
@@ -120,6 +121,16 @@ public class BoardController {
 		
 		// 컨트롤러 -> 뷰페이지로 전달 (Model)
 		model.addAttribute("boardList", boardList);
+	
+		//페이징 블럭(페이지 하단 블럭)
+		PageVO pageVO = new PageVO();		
+		pageVO.setCri(cri) ; //page, pageSize
+		
+		//서비스 기능 -> 저장된 글의 개수를 가져오는 기능
+		pageVO.setTotalCount(bService.boardTotalCount());
+		
+		model.addAttribute("pageVO", pageVO);
+		
 		
 		//logger.info(" /views/board/listALL.jsp 페이지 연결");
 		logger.info(" /views/board/listCri.jsp 페이지 연결");
@@ -132,10 +143,12 @@ public class BoardController {
 	@GetMapping(value = "/read")
 	public void boardReadGET(@RequestParam("bno") int bno,
 			                 Model model,
+			                 @ModelAttribute("cri") Criteria cri,
 			                 HttpSession session) throws Exception{
 		logger.info(" boardReadGET() 실행 ");
 		
 		logger.info(" bno : {}",bno);
+		logger.info(" cri : {}",cri);
 		
 		boolean updateCheck = (boolean)session.getAttribute("updateCheck");
 		
@@ -162,7 +175,7 @@ public class BoardController {
 	// http://localhost:8088/board/modify?bno=11
 	// 게시판 수정하기 GET  
 	@RequestMapping(value = "/modify",method = RequestMethod.GET)
-	public void boardModifyGET(@ModelAttribute("bno") int bno,
+	public void boardModifyGET(@ModelAttribute("bno") int bno,@ModelAttribute("cri") Criteria cri,
 			Model model) throws Exception {
 		logger.info(" boardModifyGET() 실행 ");
 		// 전달된 정보(파라메터)를 저장
@@ -180,7 +193,7 @@ public class BoardController {
 	
 	// 게시판 수정하기 POST 
 	@RequestMapping(value = "/modify",method = RequestMethod.POST)
-	public String boardModifyPOST(BoardVO vo,
+	public String boardModifyPOST(BoardVO vo, @ModelAttribute("cri") Criteria cri,
 			                  RedirectAttributes rttr) throws Exception{
 		logger.info(" boardModifyPOST() 실행 ");	
 		
@@ -198,13 +211,15 @@ public class BoardController {
 		// 페이지 이동	(리스트)	
 		
 		//return "redirect:/board/listALL";
-		return "redirect:/board/listCri";
+		//return "redirect:/board/listCri";
+		return "redirect:/board/listCri?page=" + cri.getPage() + "&pageSize="+cri.getPageSize();
 	}
 	
 	// http://localhost:8088/board/remove (POST)
 	// 게시판 글삭제
 	@RequestMapping(value = "/remove",method = RequestMethod.POST)
 	public String boardRemovePOST(/* @ModelAttribute */ int bno,
+									@ModelAttribute("cri") Criteria cri, 
 			                      RedirectAttributes rttr  ) throws Exception{
 		logger.info(" boardRemovePOST() 실행 ! ");
 		

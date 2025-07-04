@@ -23,6 +23,8 @@
 			<!-- submit 버튼 클릭시 정보 전달하기위한 폼태그 -->            
             <form role="form" > <!-- action, method 속성 생략 -->
             	<input type="hidden" name="bno" value="${boardVO.bno}">
+            	<input type="hidden" name="page" value="${cri.page}">
+            	<input type="hidden" name="pageSize" value="${cri.pageSize}">
             </form>
             
               <div class="box-body">
@@ -87,7 +89,8 @@
 			$(".btn-danger").click(function(){
 				alert(" 게시판 목록으로 이동합니다! ");
 				// 게시판 목록으로 이동
-				location.href="/board/listALL";				
+				//location.href="/board/listALL";				
+				location.href="/board/listCri?page=${cri.page}&pageSize=${cri.pageSize}";				
 			});//click
 			
 			var form = $("form[role='form']");

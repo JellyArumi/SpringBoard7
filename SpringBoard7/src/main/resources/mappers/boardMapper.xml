@@ -33,9 +33,7 @@
 		order by bno desc 
 		limit #{pageStart},#{pageSize}
 	</select>
-	
-	
-	
+		
 	<!-- 게시판 본문보기 -->
 	<select id="getBoard" resultType="BoardVO" >
 		select * from tbl_board	
@@ -61,6 +59,11 @@
 		where bno = #{bno}	
 	</delete>
 	
+	
+	<!-- 게시판 글 갯수 카운트 -->
+	<select id="boardTotalCount" resultType="int">
+  	SELECT count(*) FROM tbl_board
+	</select>
 	
 
 

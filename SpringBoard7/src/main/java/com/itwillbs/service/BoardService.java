@@ -16,8 +16,12 @@ public interface BoardService {
 	
 	// 게시판 리스트(all)
 	public List<BoardVO> boardListAll() throws Exception;
+	
 	// 게시판 리스트(cri)
 	public List<BoardVO> boardListCri(Criteria cri) throws Exception;
+	
+	// 게시판 글 개수 조회
+	public int boardTotalCount() throws Exception;
 	
 	
 	

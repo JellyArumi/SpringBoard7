@@ -9,7 +9,7 @@
 
 	<div class="content">
 	<h1>/board/modify.jsp</h1>
-	
+	${Criteria }
 	<%-- 		${updateCheck } --%>
 <%-- 	${boardVO } --%>
 	
@@ -22,6 +22,8 @@
             <!-- form start -->
 			<!-- submit 버튼 클릭시 정보 전달하기위한 폼태그 -->            
             <form role="form" action="" method="post"> <!-- action, method 속성 생략 -->
+            <input type="hidden" name="page" value="${cri.page}">
+            	<input type="hidden" name="pageSize" value="${cri.pageSize}">
             
               <div class="box-body">
                 <div class="form-group">

@@ -39,7 +39,21 @@ public class PageVO {
 
 	////////////////////////////////////////////////////////////
 	private void calcData() { //페이징 블럭에 필요한 정보를 계산 메서드
-		
+		//끝 페이지 번호(endPage)
+		//  [endPage = (int)Math.ceil(페이지번호/(double)페이지사이즈)*페이지 사이즈]
+		endPage = (int)(Math.ceil(cri.getPage() / (double)pageBlock) *pageBlock);
+				
+     	startPage = (endPage-pageBlock) +1; 
+     	
+     	int tmpEndPage = (int)Math.ceil(totalCount/(double)cri.getPageSize());
+     	
+     	if(endPage>tmpEndPage) {
+     		endPage = tmpEndPage;
+     	}
+     	
+     	prev = startPage !=1;
+     	next = endPage*cri.getPageSize() <totalCount;
+				
 	}
 	////////////////////////////////////////////////////////////
 	
